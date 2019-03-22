@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sales_file: one
+  customer_name: 'Customer 1'
+  item_description: 'Some Item'
+  item_price: 9.99
+  quantity: 1
+  merchant_name: 'Target'
+  merchant_address: '123 Oak St'
+
+two:
+  sales_file: one
+  customer_name: 'Customer 2'
+  item_description: 'Another Item'
+  item_price: 99.99
+  quantity: 5
+  merchant_name: 'Walmart'
+  merchant_address: '456 Palm Dr'

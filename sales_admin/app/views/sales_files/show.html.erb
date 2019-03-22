@@ -1,0 +1,39 @@
+
+<h1>Viewing Sales File (<%= @sales_file.id %>)</h1>
+
+<p>
+  <strong>Description:</strong>
+  <%= @sales_file.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @sales_file.status %>
+</p>
+
+<p>
+  <strong>Imported Rows:</strong>
+  <%= @sales_file.sales.size %>
+</p>
+
+<p>
+  <strong>Erred Rows:</strong>
+  <%= @sales_file.num_erred_rows %>
+</p>
+
+<p>
+  <strong>Total Price:</strong>
+  <%= dollar_format @sales_file.total_price %>
+</p>
+
+<% if @sales_file.sales.any? %>
+  <%= render partial: 'sales/table', locals: { title: 'Imported Sales', sales: @sales_file.sales, error: false } %>
+<% end %>
+
+<% if @erred_sales.any? %>
+  <%= render partial: 'sales/table', locals: { title: 'Sales In Error', sales: @erred_sales, error: true } %>
+<% end %>
+
+<%= link_to 'Back', sales_files_path, class: 'btn btn-secondary' %> 
+<%= process_button(@sales_file) %>
+<%= link_to 'Destroy', @sales_file, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

@@ -1,0 +1,42 @@
+
+<h1>Sales Files</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>File Status</th>
+      <th>Number of Records</th>
+      <th>Total Price</th>
+      <th>Created At</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sales_files.each do |sales_file| %>
+      <tr>
+        <td><%= sales_file.description %></td>
+        <td><%= sales_file.status %></td>
+        <td><%= sales_file.sales.size %></td>
+        <td><%= dollar_format sales_file.total_price %></td>
+        <td><%= sales_file.created_at %></td>
+        <td><%= link_to 'Show', sales_file %></td>
+        <td><%= link_to 'Destroy', sales_file, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><b><%= dollar_format @sales_files.sum(&:total_price) %></b></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sales File', new_sales_file_path, class: 'btn btn-primary' %>
